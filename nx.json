@@ -36,5 +36,6 @@
       },
       "exclude": ["apps/account-e2e/**/*"]
     }
-  ]
+  ],
+  "nxCloudAccessToken": "NzE1NjkxNzQtNTI5Yy00NGQ5LTliMDItY2EzZTdlYTE3NDkxfHJlYWQtd3JpdGU="
 }
