@@ -5,10 +5,10 @@ export namespace AccountSignup {
 
 	export class Request {
 		@IsEmail()
-    email!: string;
+    email: string;
 
 		@IsString()
-		password!: string;
+		password: string;
 
     @IsOptional()
 		@IsString()
@@ -16,6 +16,6 @@ export namespace AccountSignup {
 	}
 
 	export class Response {
-    email!: string;
+    email: string;
 	}
 }

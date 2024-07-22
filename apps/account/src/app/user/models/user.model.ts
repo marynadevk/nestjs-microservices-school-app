@@ -1,11 +1,10 @@
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
 import { IUser, UserRole } from '@school/interfaces';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema()
 export class User extends Document implements IUser {
-  @Prop()
-  _id: string;
+  _id?: string | Types.ObjectId;
   @Prop()
   displayName?: string;
 

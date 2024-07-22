@@ -4,6 +4,7 @@ import { UserEntity } from '../user/entities/user.entity';
 import { UserRole } from '@school/interfaces';
 import { JwtService } from '@nestjs/jwt';
 import { AccountSignup } from '@school/contracts';
+import { Types } from 'mongoose';
 
 const VALIDATION_ERROR = 'Credentials are not valid';
 
@@ -42,7 +43,7 @@ export class AuthService {
     return { id: user._id };
   }
 
-  async login(id: string) {
+  async login(id: string | Types.ObjectId) {
     return {
       access_token: await this.jwtService.signAsync({ id }),
     };

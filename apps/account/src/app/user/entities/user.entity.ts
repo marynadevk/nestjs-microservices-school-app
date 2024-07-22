@@ -1,8 +1,9 @@
 import { IUser, UserRole } from '@school/interfaces';
 import * as bcrypt from 'bcrypt';
+import { Types } from 'mongoose';
 
 export class UserEntity implements IUser {
-  _id?: string;
+  _id?: string | Types.ObjectId;
   displayName?: string;
   email: string;
   passwordHash: string;
