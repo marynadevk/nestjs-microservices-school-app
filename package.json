@@ -2,7 +2,10 @@
   "name": "@school/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "nx run-many --target=serve --all --parallel=10",
+    "build": "nx build"
+  },
   "private": true,
   "dependencies": {
     "@nestjs/common": "^10.0.2",
