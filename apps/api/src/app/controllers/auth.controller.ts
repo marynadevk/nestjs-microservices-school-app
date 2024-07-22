@@ -15,7 +15,7 @@ export class AuthController {
       return await this.rmqService.send<
         AccountSignup.Request,
         AccountSignup.Response
-      >(AccountSignup.topic, dto);
+      >(AccountSignup.topic, dto, { headers: { requestId: '123' }});
     } catch (e) {
       console.log(e);
       if (e instanceof Error) {
