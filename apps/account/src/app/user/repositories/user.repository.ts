@@ -11,15 +11,24 @@ export class UserRepository {
   ) {}
 
   async createUser(user: UserEntity) {
-    const createdUser = new this.userModel(user);
-    return createdUser.save();
+    const newUser = new this.userModel(user);
+    return newUser.save();
   }
 
-  async findUserByEmail(email: string) {
+  async updateUser({ _id, ...rest }: UserEntity) {
+    return this.userModel.updateOne({ _id }, { $set: { ...rest } }).exec();
+  }
+
+  async findUser(email: string) {
     return this.userModel.findOne({ email }).exec();
   }
 
-  async deleteUserByEmail(email: string) {
-    return this.userModel.deleteOne({ email }).exec();
+  async findUserById(id: string) {
+    return this.userModel.findById(id).exec();
+  }
+
+  async deleteUser(email: string) {
+    this.userModel.deleteOne({ email }).exec();
   }
 }
+
