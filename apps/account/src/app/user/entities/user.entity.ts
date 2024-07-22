@@ -1,4 +1,4 @@
-import { IUser, UserRole } from '@school-project/interfaces';
+import { IUser, UserRole } from '@school/interfaces';
 import * as bcrypt from 'bcrypt';
 
 export class UserEntity implements IUser {

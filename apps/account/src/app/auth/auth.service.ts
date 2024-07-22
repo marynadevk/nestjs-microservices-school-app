@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { RegisterDto } from './auth.controller';
 import { UserRepository } from '../user/repositories/user.repository';
 import { UserEntity } from '../user/entities/user.entity';
-import { UserRole } from '@school-project/interfaces';
+import { UserRole } from '@school/interfaces';
 import { JwtService } from '@nestjs/jwt';
+import { AccountSignup } from '@school/contracts';
 
 const VALIDATION_ERROR = 'Credentials are not valid';
 
@@ -14,7 +14,7 @@ export class AuthService {
     private readonly jwtService: JwtService
   ) {}
 
-  async signup({ email, password, displayName }: RegisterDto) {
+  async signup({ email, password, displayName }: AccountSignup.Request) {
     const oldUser = await this.userRepository.findUserByEmail(email);
     if (oldUser) {
       throw new Error('User already exists');

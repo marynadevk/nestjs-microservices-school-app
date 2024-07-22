@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+  db:
+    image: mongo
+    container_name: mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    ports:
+     - 27017:27017
+    volumes:
+      - ./mongo_db:/data/db
+
+  rmq:
+    image: rabbitmq:3-management
+    restart: always
+    ports:
+      - 15672:15672
+      - 5672:5672
