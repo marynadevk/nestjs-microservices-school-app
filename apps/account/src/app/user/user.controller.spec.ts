@@ -4,7 +4,7 @@ import { RMQModule, RMQService, RMQTestService } from 'nestjs-rmq';
 import { UserModule } from './user.module';
 import { AuthModule } from '../auth/auth.module';
 import { MongooseModule } from '@nestjs/mongoose';
-import { getMongoConfig } from '../configs/mongo.config';
+import { getMongoConfig } from '../../configs/mongo.config';
 import { INestApplication } from '@nestjs/common';
 import { UserRepository } from './repositories/user.repository';
 import {
@@ -44,7 +44,7 @@ describe('UserController', () => {
       imports: [
         ConfigModule.forRoot({
           isGlobal: true,
-          envFilePath: 'envs/.account.env',
+          envFilePath: '../../../envs/.account.env',
         }),
         RMQModule.forTest({}),
         UserModule,

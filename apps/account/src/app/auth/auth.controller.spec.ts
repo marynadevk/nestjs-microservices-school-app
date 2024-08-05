@@ -4,7 +4,7 @@ import { RMQModule, RMQService, RMQTestService } from 'nestjs-rmq';
 import { UserModule } from '../user/user.module';
 import { AuthModule } from './auth.module';
 import { MongooseModule } from '@nestjs/mongoose';
-import { getMongoConfig } from '../configs/mongo.config'
+import { getMongoConfig } from '../../configs/mongo.config'
 import { INestApplication } from '@nestjs/common';
 import { UserRepository } from '../user/repositories/user.repository';
 import { AccountLogin, AccountSignup } from '@school/contracts';
@@ -27,7 +27,7 @@ describe('AuthController', () => {
 	beforeAll(async () => {
 		const module: TestingModule = await Test.createTestingModule({
 			imports: [
-				ConfigModule.forRoot({ isGlobal: true, envFilePath: 'envs/.account.env' }),
+				ConfigModule.forRoot({ isGlobal: true, envFilePath: '../../../envs/.account.env' }),
 				RMQModule.forTest({}),
 				UserModule,
 				AuthModule,

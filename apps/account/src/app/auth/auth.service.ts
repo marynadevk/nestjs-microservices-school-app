@@ -16,7 +16,7 @@ export class AuthService {
   ) {}
 
   async signup({ email, password, displayName }: AccountSignup.Request) {
-    const oldUser = await this.userRepository.findUser(email);
+    const oldUser = await this.userRepository.findUserByEmail(email);
     if (oldUser) {
       throw new Error('User already exists');
     }
@@ -31,11 +31,14 @@ export class AuthService {
   }
 
   async validateUser(email: string, password: string) {
-    const user = await this.userRepository.findUser(email);
+    const user = await this.userRepository.findUserByEmail(email);
     const userEntity = new UserEntity(user);
     const isPasswordValid = await userEntity.comparePassword(password);
 
-    if (!user || !isPasswordValid) {
+    if (!user) {
+      throw new Error(VALIDATION_ERROR);
+    }
+    if (!isPasswordValid) {
       throw new Error(VALIDATION_ERROR);
     }
 

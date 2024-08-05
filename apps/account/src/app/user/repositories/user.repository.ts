@@ -19,7 +19,7 @@ export class UserRepository {
     return this.userModel.updateOne({ _id }, { $set: { ...rest } }).exec();
   }
 
-  async findUser(email: string) {
+  async findUserByEmail(email: string) {
     return this.userModel.findOne({ email }).exec();
   }
 

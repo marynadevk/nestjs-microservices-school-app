@@ -24,7 +24,7 @@ To set up the project, follow these steps:
 2. **Install dependencies:**
 
 ```sh
-  npm install
+  npm ci
 ```
 
 3. **Create .env files with the same variables as in env.example directory**
